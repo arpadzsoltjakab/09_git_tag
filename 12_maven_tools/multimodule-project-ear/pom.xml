@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>multimodule-project</artifactId>
+		<groupId>hu.dpc.training</groupId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>multimodule-project-ear</artifactId>
+	<packaging>ear</packaging>
+	<name>multimodule-project EAR module</name>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<version>6</version>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+							<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+						</manifest>
+					</archive>
+					<modules>
+						<webModule>
+							<groupId>hu.dpc.training</groupId>
+							<artifactId>multimodule-project-web</artifactId>
+							<contextRoot>multimodule-project</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>hu.dpc.training</groupId>
+			<artifactId>multimodule-project-web</artifactId>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>hu.dpc.training</groupId>
+			<artifactId>multimodule-project-ejb</artifactId>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-classic</artifactId>
+		</dependency>	
+	</dependencies>
+</project>
